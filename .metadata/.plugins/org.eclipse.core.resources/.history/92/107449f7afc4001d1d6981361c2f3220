@@ -1,0 +1,114 @@
+package edu.tufts.comp181.util;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import org.eclipse.jdt.core.dom.AST;
+import org.eclipse.jdt.core.dom.ASTNode;
+import org.eclipse.jdt.core.dom.ASTParser;
+import org.eclipse.jdt.core.dom.CompilationUnit;
+import org.eclipse.jdt.core.dom.Message;
+import org.eclipse.jdt.internal.corext.dom.GenericVisitor;
+import org.eclipse.*;
+
+/*
+ * Created on Aug 2, 2004
+ *
+ * @author Ras Bodik, UC Berkeley
+ */
+
+/**
+ * @author bodik
+ * @author Lexin Shan
+ * A wrapper for invoking the Eclipse JDT Java parser.
+ */
+public class Parser {
+
+	/**
+	 * Parse a the file specified by <i>fileName</i> into AST according to java
+	 * syntax
+	 * 
+	 * @param fileName
+	 * @return
+	 */
+	public static CompilationUnit parseJavaFile(String fileName) {
+		File file = new File(fileName);
+		char source[] = new char[(int) file.length()];
+		try {
+			FileReader fileReader = new FileReader(file);
+			fileReader.read(source);
+		} catch (FileNotFoundException e) {
+			Util.errorMsg("File " + fileName + " doesn't exist.");
+			Util.exit();
+		} catch (IOException e) {
+			Util.errorMsg("Problems reading file " + fileName + ".");
+			Util.exit();
+		}
+		return parseSource(source);
+	}
+
+	/**
+	 * @param source
+	 * @return
+	 */
+	public static CompilationUnit parseSource(char[] source) {
+		ASTParser parser = ASTParser.newParser(AST.JLS2);
+		parser.setSource(source);
+		CompilationUnit ast = (CompilationUnit) parser.createAST(null);
+
+		// Check for parser errors
+		ParserChecker pc = new ParserChecker();
+		ast.accept(pc);
+		
+		if (pc.isMalformed()) {
+			Util.errorMsg("Syntax error found.");
+			Message[] msgs = ast.getMessages();
+			for (int i = 0; i < msgs.length; i++) {
+				Util.errorMsg(msgs[i].getMessage());
+			}
+			Util.exit();
+		}
+
+		return ast;
+	}
+
+	/**
+	 * 
+	 * @author lexinshan
+	 *
+	 * This is a trivil recursive visitor to check whether any of the ASTNode
+	 * is malformed.
+	 */
+	static class ParserChecker extends GenericVisitor {
+
+		/**
+		 * This field is set to true when the first malformed ASTNode is found
+		 */
+		private boolean malformed = false;
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.jdt.core.dom.ASTVisitor#preVisit(org.eclipse.jdt.core.dom.ASTNode)
+		 */
+		public void preVisit(ASTNode node) {
+			// TODO Auto-generated method stub
+
+			if ((node.getFlags() & CompilationUnit.MALFORMED) != 0) {
+				malformed = true;
+			} else {
+				super.preVisit(node);
+			}
+		}
+		/**
+		 * @return Returns whether the AST previously visited contains any 
+		 * malformed ASTNode
+		 */
+		public boolean isMalformed() {
+			return malformed;
+		}
+
+	}
+}

@@ -1,0 +1,35 @@
+package comp.ma;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AbsoluteLayout;
+import android.widget.Button;
+import android.widget.*;
+import android.app.*;
+
+public class HelloWorld extends Activity {
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+        
+        Button button = (Button) this.findViewById(R.id.button);
+        button.setOnClickListener(onButtonClick);
+    }
+    
+    // Create an anonymous class to act as a button click listener.
+    private OnClickListener onButtonClick = new OnClickListener()
+    {
+        public void onClick(View v)
+        {
+        	String name = ((TextView)findViewById(R.id.name)).getText().toString();
+        	AlertDialog ad = new AlertDialog(HelloWorld);
+        	AbsoluteLayout fl = (AbsoluteLayout) findViewById(R.id.AbsoluteLayout01);
+        	
+
+        }
+    };
+}

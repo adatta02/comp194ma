@@ -1,0 +1,266 @@
+/*
+ * Created on Oct 29, 2003
+ *
+ * To change the template for this generated file go to
+ * Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments
+ */
+package edu.tufts.comp181.checker;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+
+import org.eclipse.jdt.core.dom.AST;
+import org.eclipse.jdt.core.dom.ASTNode;
+import org.eclipse.jdt.core.dom.Assignment;
+import org.eclipse.jdt.core.dom.BooleanLiteral;
+import org.eclipse.jdt.core.dom.CompilationUnit;
+import org.eclipse.jdt.core.dom.Expression;
+import org.eclipse.jdt.core.dom.IfStatement;
+import org.eclipse.jdt.core.dom.InfixExpression;
+import org.eclipse.jdt.core.dom.MethodDeclaration;
+import org.eclipse.jdt.core.dom.MethodInvocation;
+import org.eclipse.jdt.core.dom.NumberLiteral;
+import org.eclipse.jdt.core.dom.PrefixExpression;
+import org.eclipse.jdt.core.dom.PrimitiveType;
+import org.eclipse.jdt.core.dom.ReturnStatement;
+import org.eclipse.jdt.core.dom.SimpleName;
+import org.eclipse.jdt.core.dom.SimpleType;
+import org.eclipse.jdt.core.dom.StringLiteral;
+import org.eclipse.jdt.core.dom.Type;
+import org.eclipse.jdt.core.dom.TypeDeclaration;
+import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
+import org.eclipse.jdt.core.dom.WhileStatement;
+import org.eclipse.jdt.internal.corext.dom.GenericVisitor;
+
+/**
+ * Performs type-checking.
+ * 
+ * @author manu
+ */
+public class SemanticChecker extends GenericVisitor {
+
+	private final Type boolType;
+
+	private final Type intType;
+
+	private final Type voidType;
+
+	private final Type stringType;
+
+	private final Type unknownType;
+
+	/**
+	 * true if type error found
+	 */
+	private boolean hasError = false;
+
+	private MethodEntry curMethodEntry;
+
+	public SemanticChecker() {
+		AST ast = new AST(new HashMap());
+		boolType = ast.newPrimitiveType(PrimitiveType.BOOLEAN);
+		intType = ast.newPrimitiveType(PrimitiveType.INT);
+		voidType = ast.newPrimitiveType(PrimitiveType.VOID);
+		stringType = ast.newSimpleType(ast.newSimpleName("String"));
+		unknownType = ast.newSimpleType(ast.newSimpleName("$unknown$"));
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.jdt.core.dom.ASTVisitor#visit(org.eclipse.jdt.core.dom.CompilationUnit)
+	 */
+	public boolean visit(CompilationUnit node) {
+		TypeDeclaration programDecl = null;
+
+		if (node.types().size() != 1
+				|| !(programDecl = (TypeDeclaration) node.types().get(0))
+						.getName().getIdentifier().equals("Program")) {
+			// Semantic Error
+			// more than one Program or zero definition is found
+			SemanticError.error_3_ProgramClassError(null);
+			hasError = true;
+		}
+		if (programDecl != null) {
+			checkProgramClass(programDecl);
+		}
+
+		return super.visit(node);
+	}
+
+	public boolean visit(TypeDeclaration t) {
+		// just visit methods
+		MethodDeclaration[] methodDecls = t.getMethods();
+		for (int i = 0; i < methodDecls.length; i++) {
+			methodDecls[i].accept(this);
+		}
+		return false;
+	}
+
+	/**
+	 * @param t
+	 */
+	private void checkProgramClass(TypeDeclaration t) {
+		// Check Program class
+		if (!t.getName().getIdentifier().equals("Program")) {
+			SemanticError.error_3_ProgramClassError(null);
+			hasError = true;
+		}
+
+		// Check for main method
+		boolean foundMain = false;
+		for (Iterator iter = t.bodyDeclarations().iterator(); iter.hasNext();) {
+			ASTNode decl = (ASTNode) iter.next();
+
+			if (decl instanceof MethodDeclaration) {
+				MethodDeclaration md = (MethodDeclaration) decl;
+
+				if (md.getName().getIdentifier().equals("main")) {
+					foundMain = true;
+
+					// Check for main's return type
+					if (checkType(voidType, md.getReturnType2()) == null
+							|| md.parameters().size() != 0) {
+						SemanticError.error_3_ProgramClassError(null);
+						hasError = true;
+					}
+				}
+			}
+		}
+
+		if (!foundMain) {
+			SemanticError.error_3_ProgramClassError(null);
+			hasError = true;
+		}
+	}
+
+	public boolean visit(MethodDeclaration m) {
+		curMethodEntry = (MethodEntry) m
+				.getProperty(DecafProperties.METHOD_ENTRY);
+
+		// -----------------------------------------------
+		// COMP 181: Start working here:
+		
+		// PA3 TODO
+		// Check if the last statement a ReturnStatement
+
+		// Then visit the rest of the body...
+		m.getBody().accept(this);
+
+		return false;
+	}
+
+	public boolean visit(VariableDeclarationStatement v) {
+		// skip it
+		return false;
+	}
+
+	public boolean visit(Assignment a) {
+		// PA3 TODO:
+		// 1. Check right-hand side expression
+		// 2. Make sure left-hand side (which is always a simple identifier) is
+		// compatible with assignment
+
+		return false;
+	}
+
+	public void endVisit(IfStatement node) {
+		// PS3 TODO:
+		// Make sure the condition is of type boolean
+
+		super.endVisit(node);
+	}
+
+	public void endVisit(WhileStatement node) {
+		// PS3 TODO:
+		// Make sure the condition is of type boolean
+
+		super.endVisit(node);
+	}
+
+	public void endVisit(ReturnStatement node) {
+		// PS3 TODO
+		// Ensure three conditions:
+		// (a) A void method should not return a value
+		// (b) A non-void method should return a value
+		// (c) A non-void method should return a value whose type is compatible
+		// with the return type.
+
+		super.endVisit(node);
+
+	}
+
+	/**
+	 * see if two types match, and print error possibly
+	 * 
+	 * @param t1
+	 *            first type
+	 * @param t2
+	 *            second type
+	 * @return matching type if they match, otherwise <code>null</code>
+	 */
+	private Type checkType(Type expected, Type actual) {
+		// PA3 TODO:
+		// Check to see if expected type is compatible with actual type. If so,
+		// return expected type; otherwise return null
+		//
+		// Use this method to determine the legality of assignments and passing
+		// parameters.
+
+		return null;
+	}
+
+	public boolean visit(InfixExpression e) {
+		// PA3 TODO:
+		// Check compatibility of an infix expression (binary expression)
+		return false;
+	}
+
+	public boolean visit(PrefixExpression e) {
+		// PA3 TODO:
+		// Check compatibility of prefix expression
+		return false;
+	}
+
+	public boolean visit(MethodInvocation node) {
+		// PS3 TODO:
+		// Look up the method entry, check for:
+		// (a) Make sure a method that returns void isn't used in an expression
+		// (you can use node.getParent() to move up in the AST)
+		// (b) Check compatibility of actual argument types with formal argument
+		// types.
+		// (c) Check special case of the print() function
+
+		return false;
+	}
+
+	public boolean visit(SimpleName node) {
+		// PS3 TODO:
+		// Look up symbol table entry and store type information on node
+
+		return false;
+	}
+
+	public boolean visit(NumberLiteral node) {
+		node.setProperty(DecafProperties.TYPE, intType);
+		return false;
+	}
+
+	public boolean visit(BooleanLiteral node) {
+		node.setProperty(DecafProperties.TYPE, boolType);
+		return false;
+	}
+
+	public boolean visit(StringLiteral node) {
+		node.setProperty(DecafProperties.TYPE, stringType);
+		return false;
+	}
+
+	/**
+	 * @return Returns the hasError.
+	 */
+	public boolean hasError() {
+		return hasError;
+	}
+}

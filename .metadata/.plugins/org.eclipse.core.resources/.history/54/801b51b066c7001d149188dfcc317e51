@@ -1,0 +1,29 @@
+// This is file simple.decaf, written in SimpleDecaf language
+
+// See simple.c for a hand-translaton of this file to C.
+
+class Program {
+	
+	static int i;
+	static boolean b;
+	
+	static void main () {
+
+		string loc;
+		boolean m;
+		int i;
+		m = false;
+		
+		print(m);
+		
+		print(5);
+
+ 		print("hello");
+
+		return;
+	}
+	
+	static int foo (int a, boolean b) {
+		return a;
+	}
+}
