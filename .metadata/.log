@@ -4027,3 +4027,520 @@ Command-line arguments:  -os win32 -ws win32 -arch x86
 !MESSAGE Help documentation could not be indexed completely.
 !SUBENTRY 1 org.eclipse.help.base 4 4 2009-02-04 15:31:18.359
 !MESSAGE Help document /org.antlr.doc/doc/xml-support.html cannot be opened.
+!SESSION 2009-02-06 16:30:00.171 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_11
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.equinox.p2.artifact.repository 4 0 2009-02-06 16:33:09.421
+!MESSAGE Unable to load repository: https://dl-ssl.google.com/android/eclipse/
+!STACK 1
+org.eclipse.equinox.internal.provisional.p2.core.ProvisionException: Error reading update site https://dl-ssl.google.com/android/eclipse/.
+	at org.eclipse.equinox.internal.p2.updatesite.UpdateSite.loadSiteFile(UpdateSite.java:172)
+	at org.eclipse.equinox.internal.p2.updatesite.UpdateSite.load(UpdateSite.java:105)
+	at org.eclipse.equinox.internal.p2.updatesite.artifact.UpdateSiteArtifactRepository.<init>(UpdateSiteArtifactRepository.java:45)
+	at org.eclipse.equinox.internal.p2.updatesite.artifact.UpdateSiteArtifactRepositoryFactory.load(UpdateSiteArtifactRepositoryFactory.java:33)
+	at org.eclipse.equinox.internal.p2.artifact.repository.ArtifactRepositoryManager.loadRepository(ArtifactRepositoryManager.java:439)
+	at org.eclipse.equinox.internal.p2.artifact.repository.ArtifactRepositoryManager.loadRepository(ArtifactRepositoryManager.java:415)
+	at org.eclipse.equinox.internal.p2.artifact.repository.ArtifactRepositoryManager.loadRepository(ArtifactRepositoryManager.java:402)
+	at org.eclipse.equinox.internal.provisional.p2.engine.phases.Sizing.completeInstallableUnitPhase(Sizing.java:81)
+	at org.eclipse.equinox.internal.provisional.p2.engine.InstallableUnitPhase.completePhase(InstallableUnitPhase.java:79)
+	at org.eclipse.equinox.internal.provisional.p2.engine.Phase.postPerform(Phase.java:143)
+	at org.eclipse.equinox.internal.provisional.p2.engine.Phase.perform(Phase.java:85)
+	at org.eclipse.equinox.internal.provisional.p2.engine.InstallableUnitPhase.perform(InstallableUnitPhase.java:53)
+	at org.eclipse.equinox.internal.provisional.p2.engine.Phase.perform(Phase.java:46)
+	at org.eclipse.equinox.internal.provisional.p2.engine.PhaseSet.perform(PhaseSet.java:38)
+	at org.eclipse.equinox.internal.provisional.p2.engine.Engine.perform(Engine.java:53)
+	at org.eclipse.equinox.internal.provisional.p2.ui.operations.ProvisioningUtil.getSizeInfo(ProvisioningUtil.java:253)
+	at org.eclipse.equinox.internal.p2.ui.dialogs.UpdateOrInstallWizardPage$2.run(UpdateOrInstallWizardPage.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.SocketException: Unconnected sockets not implemented
+	at javax.net.SocketFactory.createSocket(Unknown Source)
+	at sun.net.www.protocol.https.HttpsClient.createSocket(Unknown Source)
+	at sun.net.NetworkClient.doConnect(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.protocol.https.HttpsClient.<init>(Unknown Source)
+	at sun.net.www.protocol.https.HttpsClient.New(Unknown Source)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(Unknown Source)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.UrlConnectionRetrieveFileTransfer.openStreams(UrlConnectionRetrieveFileTransfer.java:237)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:639)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:381)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:95)
+	at org.eclipse.equinox.internal.p2.updatesite.ECFTransport.transfer(ECFTransport.java:284)
+	at org.eclipse.equinox.internal.p2.updatesite.ECFTransport.performDownload(ECFTransport.java:193)
+	at org.eclipse.equinox.internal.p2.updatesite.ECFTransport.download(ECFTransport.java:167)
+	at org.eclipse.equinox.internal.p2.updatesite.UpdateSite.loadSiteFile(UpdateSite.java:156)
+	... 17 more
+!SUBENTRY 1 org.eclipse.equinox.p2.updatesite 4 1002 2009-02-06 16:33:09.421
+!MESSAGE Error reading update site https://dl-ssl.google.com/android/eclipse/.
+!STACK 0
+java.net.SocketException: Unconnected sockets not implemented
+	at javax.net.SocketFactory.createSocket(Unknown Source)
+	at sun.net.www.protocol.https.HttpsClient.createSocket(Unknown Source)
+	at sun.net.NetworkClient.doConnect(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.protocol.https.HttpsClient.<init>(Unknown Source)
+	at sun.net.www.protocol.https.HttpsClient.New(Unknown Source)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(Unknown Source)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.UrlConnectionRetrieveFileTransfer.openStreams(UrlConnectionRetrieveFileTransfer.java:237)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:639)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:381)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:95)
+	at org.eclipse.equinox.internal.p2.updatesite.ECFTransport.transfer(ECFTransport.java:284)
+	at org.eclipse.equinox.internal.p2.updatesite.ECFTransport.performDownload(ECFTransport.java:193)
+	at org.eclipse.equinox.internal.p2.updatesite.ECFTransport.download(ECFTransport.java:167)
+	at org.eclipse.equinox.internal.p2.updatesite.UpdateSite.loadSiteFile(UpdateSite.java:156)
+	at org.eclipse.equinox.internal.p2.updatesite.UpdateSite.load(UpdateSite.java:105)
+	at org.eclipse.equinox.internal.p2.updatesite.artifact.UpdateSiteArtifactRepository.<init>(UpdateSiteArtifactRepository.java:45)
+	at org.eclipse.equinox.internal.p2.updatesite.artifact.UpdateSiteArtifactRepositoryFactory.load(UpdateSiteArtifactRepositoryFactory.java:33)
+	at org.eclipse.equinox.internal.p2.artifact.repository.ArtifactRepositoryManager.loadRepository(ArtifactRepositoryManager.java:439)
+	at org.eclipse.equinox.internal.p2.artifact.repository.ArtifactRepositoryManager.loadRepository(ArtifactRepositoryManager.java:415)
+	at org.eclipse.equinox.internal.p2.artifact.repository.ArtifactRepositoryManager.loadRepository(ArtifactRepositoryManager.java:402)
+	at org.eclipse.equinox.internal.provisional.p2.engine.phases.Sizing.completeInstallableUnitPhase(Sizing.java:81)
+	at org.eclipse.equinox.internal.provisional.p2.engine.InstallableUnitPhase.completePhase(InstallableUnitPhase.java:79)
+	at org.eclipse.equinox.internal.provisional.p2.engine.Phase.postPerform(Phase.java:143)
+	at org.eclipse.equinox.internal.provisional.p2.engine.Phase.perform(Phase.java:85)
+	at org.eclipse.equinox.internal.provisional.p2.engine.InstallableUnitPhase.perform(InstallableUnitPhase.java:53)
+	at org.eclipse.equinox.internal.provisional.p2.engine.Phase.perform(Phase.java:46)
+	at org.eclipse.equinox.internal.provisional.p2.engine.PhaseSet.perform(PhaseSet.java:38)
+	at org.eclipse.equinox.internal.provisional.p2.engine.Engine.perform(Engine.java:53)
+	at org.eclipse.equinox.internal.provisional.p2.ui.operations.ProvisioningUtil.getSizeInfo(ProvisioningUtil.java:253)
+	at org.eclipse.equinox.internal.p2.ui.dialogs.UpdateOrInstallWizardPage$2.run(UpdateOrInstallWizardPage.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2009-02-06 16:36:04.187 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_11
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.rse.ui 4 0 2009-02-06 16:39:49.890
+!MESSAGE RSEG1066U: SUB#0:Auth cancel
+!STACK 0
+com.jcraft.jsch.JSchException: Auth cancel
+	at com.jcraft.jsch.Session.connect(Session.java:448)
+	at org.eclipse.rse.connectorservice.ssh.SshConnectorService.internalConnect(SshConnectorService.java:402)
+	at org.eclipse.rse.core.subsystems.AbstractConnectorService.connect(AbstractConnectorService.java:819)
+	at org.eclipse.rse.ui.operations.SystemFetchOperation.execute(SystemFetchOperation.java:178)
+	at org.eclipse.rse.ui.operations.SystemFetchOperation.run(SystemFetchOperation.java:101)
+	at org.eclipse.rse.ui.view.AbstractSystemViewAdapter.fetchDeferredChildren(AbstractSystemViewAdapter.java:1764)
+	at org.eclipse.ui.progress.DeferredTreeContentManager$1.run(DeferredTreeContentManager.java:234)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.ui 4 0 2009-02-06 16:41:32.406
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.ExceptionInInitializerError
+	at org.eclipse.rse.eclipse.filesystem.RSEFileStoreRemoteFileWrapper.toLocalFile(RSEFileStoreRemoteFileWrapper.java:438)
+	at org.eclipse.core.internal.localstore.FileStoreRoot.toLocalPath(FileStoreRoot.java:124)
+	at org.eclipse.core.internal.localstore.FileStoreRoot.<init>(FileStoreRoot.java:57)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.setLocation(FileSystemResourceManager.java:839)
+	at org.eclipse.core.internal.resources.Project.internalSetDescription(Project.java:682)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:263)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:234)
+	at org.eclipse.rse.eclipse.filesystem.ui.actions.CreateRemoteProjectActionDelegate.createRemoteProject(CreateRemoteProjectActionDelegate.java:90)
+	at org.eclipse.rse.eclipse.filesystem.ui.actions.CreateRemoteProjectActionDelegate.run(CreateRemoteProjectActionDelegate.java:56)
+	at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:251)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:583)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:500)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3823)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3422)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+Caused by: java.lang.IllegalArgumentException: Attempted to beginRule: P/RemoteSystemsTempFiles, does not match outer scope rule: P/drunk_app
+	at org.eclipse.core.runtime.Assert.isLegal(Assert.java:64)
+	at org.eclipse.core.internal.jobs.ThreadJob.illegalPush(ThreadJob.java:122)
+	at org.eclipse.core.internal.jobs.ThreadJob.push(ThreadJob.java:232)
+	at org.eclipse.core.internal.jobs.ImplicitJobs.begin(ImplicitJobs.java:58)
+	at org.eclipse.core.internal.jobs.JobManager.beginRule(JobManager.java:230)
+	at org.eclipse.core.internal.resources.WorkManager.checkIn(WorkManager.java:117)
+	at org.eclipse.core.internal.resources.Workspace.prepareOperation(Workspace.java:1747)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:247)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:234)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:227)
+	at org.eclipse.rse.files.ui.resources.SystemRemoteEditManager.createRemoteEditProject(SystemRemoteEditManager.java:292)
+	at org.eclipse.rse.files.ui.resources.SystemRemoteEditManager.getRemoteEditProject(SystemRemoteEditManager.java:245)
+	at org.eclipse.rse.files.ui.resources.SystemRemoteEditManager.getRemoteEditProjectLocation(SystemRemoteEditManager.java:434)
+	at org.eclipse.rse.files.ui.resources.UniversalFileTransferUtility.<clinit>(UniversalFileTransferUtility.java:84)
+	... 37 more
+
+!ENTRY org.eclipse.rse.ui 4 0 2009-02-06 16:41:37.750
+!MESSAGE Error creating temp project
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Resource '/drunk_app' already exists.
+	at org.eclipse.core.internal.resources.Resource.checkDoesNotExist(Resource.java:296)
+	at org.eclipse.core.internal.resources.Resource.checkDoesNotExist(Resource.java:283)
+	at org.eclipse.core.internal.resources.Project.assertCreateRequirements(Project.java:32)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:252)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:234)
+	at org.eclipse.rse.eclipse.filesystem.ui.actions.CreateRemoteProjectActionDelegate.createRemoteProject(CreateRemoteProjectActionDelegate.java:90)
+	at org.eclipse.rse.eclipse.filesystem.ui.actions.CreateRemoteProjectActionDelegate.run(CreateRemoteProjectActionDelegate.java:56)
+	at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:251)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:583)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:500)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3823)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3422)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+!SUBENTRY 1 org.eclipse.core.resources 4 374 2009-02-06 16:41:37.750
+!MESSAGE Resource '/drunk_app' already exists.
+
+!ENTRY org.eclipse.ui.ide 2 4 2009-02-06 16:41:57.140
+!MESSAGE Problems occurred closing the selected resources.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2009-02-06 16:41:57.140
+!MESSAGE The project description file (.project) for 'drunk_app' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+
+!ENTRY org.eclipse.ui 4 0 2009-02-06 16:42:02.015
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.rse.files.ui.resources.UniversalFileTransferUtility
+	at org.eclipse.rse.eclipse.filesystem.RSEFileStoreRemoteFileWrapper.toLocalFile(RSEFileStoreRemoteFileWrapper.java:438)
+	at org.eclipse.core.internal.localstore.FileStoreRoot.toLocalPath(FileStoreRoot.java:124)
+	at org.eclipse.core.internal.localstore.FileStoreRoot.<init>(FileStoreRoot.java:57)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.setLocation(FileSystemResourceManager.java:839)
+	at org.eclipse.core.internal.resources.Project.internalSetDescription(Project.java:682)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:263)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:234)
+	at org.eclipse.rse.eclipse.filesystem.ui.actions.CreateRemoteProjectActionDelegate.createRemoteProject(CreateRemoteProjectActionDelegate.java:90)
+	at org.eclipse.rse.eclipse.filesystem.ui.actions.CreateRemoteProjectActionDelegate.run(CreateRemoteProjectActionDelegate.java:56)
+	at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:251)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:583)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:500)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3823)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3422)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+
+!ENTRY org.eclipse.core.resources 2 2 2009-02-06 16:42:38.578
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2009-02-06 16:42:38.578
+!MESSAGE The project description file (.project) for 'tweetscan' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+
+!ENTRY org.eclipse.rse.ui 4 0 2009-02-06 16:44:14.671
+!MESSAGE Error launching server: java.net.ConnectException: Connection refused: connect
+
+!ENTRY org.eclipse.rse.ui 4 0 2009-02-06 16:44:14.671
+!MESSAGE RSEG1243U: SUB#0:DRUNKSBLOG.COM
+
+!ENTRY org.eclipse.rse.ui 4 0 2009-02-06 16:44:14.671
+!MESSAGE RSEG1243U: SUB#1:4035
+
+!ENTRY org.eclipse.rse.ui 4 0 2009-02-06 16:44:14.671
+!MESSAGE RSEG1243U: SUB#2:java.net.ConnectException: Connection refused: connect
+java.net.ConnectException: Connection refused: connect
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(Unknown Source)
+	at java.net.PlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.connect(Unknown Source)
+	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.<init>(Unknown Source)
+	at com.sun.net.ssl.internal.ssl.SSLSocketFactoryImpl.createSocket(Unknown Source)
+	at org.eclipse.dstore.core.client.ClientConnection.connectDaemon(ClientConnection.java:734)
+	at org.eclipse.dstore.core.client.ClientConnection.launchServer(ClientConnection.java:637)
+	at org.eclipse.rse.connectorservice.dstore.DStoreConnectorService.launchServer(DStoreConnectorService.java:1169)
+	at org.eclipse.rse.connectorservice.dstore.DStoreConnectorService.launchServer(DStoreConnectorService.java:1159)
+	at org.eclipse.rse.connectorservice.dstore.DStoreConnectorService.internalConnect(DStoreConnectorService.java:603)
+	at org.eclipse.rse.core.subsystems.AbstractConnectorService.connect(AbstractConnectorService.java:819)
+	at org.eclipse.rse.ui.operations.SystemFetchOperation.execute(SystemFetchOperation.java:178)
+	at org.eclipse.rse.ui.operations.SystemFetchOperation.run(SystemFetchOperation.java:101)
+	at org.eclipse.rse.ui.view.AbstractSystemViewAdapter.fetchDeferredChildren(AbstractSystemViewAdapter.java:1764)
+	at org.eclipse.ui.progress.DeferredTreeContentManager$1.run(DeferredTreeContentManager.java:234)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!STACK 0
+java.lang.Exception
+	at org.eclipse.rse.ui.messages.SystemMessageDialog.LogMessage(SystemMessageDialog.java:378)
+	at org.eclipse.rse.ui.messages.SystemMessageDialog.open(SystemMessageDialog.java:405)
+	at org.eclipse.rse.ui.messages.SystemMessageDialog.displayErrorMessage(SystemMessageDialog.java:597)
+	at org.eclipse.rse.ui.messages.SystemMessageDialog.displayMessage(SystemMessageDialog.java:638)
+	at org.eclipse.rse.core.subsystems.SubSystem$DisplayErrorMessageJob.runInUIThread(SubSystem.java:974)
+	at org.eclipse.ui.progress.UIJob$1.run(UIJob.java:94)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:133)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3800)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3425)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+
+!ENTRY org.eclipse.rse.ui 4 0 2009-02-06 16:45:12.500
+!MESSAGE Error launching server: java.net.ConnectException: Connection refused: connect
+
+!ENTRY org.eclipse.rse.ui 4 0 2009-02-06 16:45:12.515
+!MESSAGE Failed to connect to the daemon on DRUNKSBLOG.COM using port 4035 with an unexpected exception
+!STACK 0
+org.eclipse.rse.services.clientserver.messages.SystemMessageException: Failed to connect to the daemon on DRUNKSBLOG.COM using port 4035 with an unexpected exception
+	at org.eclipse.rse.connectorservice.dstore.DStoreConnectorService.internalConnect(DStoreConnectorService.java:1069)
+	at org.eclipse.rse.core.subsystems.AbstractConnectorService.connect(AbstractConnectorService.java:819)
+	at org.eclipse.rse.core.subsystems.SubSystem.internalConnect(SubSystem.java:2794)
+	at org.eclipse.rse.core.subsystems.SubSystem$ConnectJob.performOperation(SubSystem.java:1596)
+	at org.eclipse.rse.core.subsystems.SubSystem$SubSystemOperationJob.run(SubSystem.java:1285)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jface 4 2 2009-02-06 19:10:33.187
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jface".
+!STACK 0
+java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.rse.files.ui.resources.UniversalFileTransferUtility
+	at org.eclipse.rse.files.ui.view.SystemViewRemoteFileAdapter.getCachedCopy(SystemViewRemoteFileAdapter.java:2894)
+	at org.eclipse.rse.files.ui.view.SystemViewRemoteFileAdapter.getEditableRemoteObject(SystemViewRemoteFileAdapter.java:2864)
+	at org.eclipse.rse.files.ui.view.SystemViewRemoteFileAdapter.handleDoubleClick(SystemViewRemoteFileAdapter.java:2763)
+	at org.eclipse.rse.ui.view.SystemView.handleDoubleClick(SystemView.java:473)
+	at org.eclipse.rse.ui.view.SystemView$1.doubleClick(SystemView.java:412)
+	at org.eclipse.jface.viewers.StructuredViewer$1.run(StructuredViewer.java:799)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.runtime.Platform.run(Platform.java:880)
+	at org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:48)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:175)
+	at org.eclipse.jface.viewers.StructuredViewer.fireDoubleClick(StructuredViewer.java:797)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.handleDoubleSelect(AbstractTreeViewer.java:1419)
+	at org.eclipse.jface.viewers.StructuredViewer$4.widgetDefaultSelected(StructuredViewer.java:1173)
+	at org.eclipse.jface.util.OpenStrategy.fireDefaultSelectionEvent(OpenStrategy.java:237)
+	at org.eclipse.jface.util.OpenStrategy.access$0(OpenStrategy.java:234)
+	at org.eclipse.jface.util.OpenStrategy$1.handleEvent(OpenStrategy.java:295)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3823)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3422)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+
+!ENTRY org.eclipse.jface 4 2 2009-02-06 19:10:35.828
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jface".
+!STACK 0
+java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.rse.files.ui.resources.UniversalFileTransferUtility
+	at org.eclipse.rse.files.ui.view.SystemViewRemoteFileAdapter.getCachedCopy(SystemViewRemoteFileAdapter.java:2894)
+	at org.eclipse.rse.files.ui.view.SystemViewRemoteFileAdapter.getEditableRemoteObject(SystemViewRemoteFileAdapter.java:2864)
+	at org.eclipse.rse.files.ui.view.SystemViewRemoteFileAdapter.handleDoubleClick(SystemViewRemoteFileAdapter.java:2763)
+	at org.eclipse.rse.ui.view.SystemView.handleDoubleClick(SystemView.java:473)
+	at org.eclipse.rse.ui.view.SystemView$1.doubleClick(SystemView.java:412)
+	at org.eclipse.jface.viewers.StructuredViewer$1.run(StructuredViewer.java:799)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.runtime.Platform.run(Platform.java:880)
+	at org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:48)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:175)
+	at org.eclipse.jface.viewers.StructuredViewer.fireDoubleClick(StructuredViewer.java:797)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.handleDoubleSelect(AbstractTreeViewer.java:1419)
+	at org.eclipse.jface.viewers.StructuredViewer$4.widgetDefaultSelected(StructuredViewer.java:1173)
+	at org.eclipse.jface.util.OpenStrategy.fireDefaultSelectionEvent(OpenStrategy.java:237)
+	at org.eclipse.jface.util.OpenStrategy.access$0(OpenStrategy.java:234)
+	at org.eclipse.jface.util.OpenStrategy$1.handleEvent(OpenStrategy.java:295)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3823)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3422)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+!SESSION 2009-02-09 16:33:15.796 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_11
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.osgi 2 0 2009-02-09 16:41:48.437
+!MESSAGE While loading class "com.android.ide.eclipse.adt.resources.IAndroidLoader", thread "Thread[Worker-1,5,main]" timed out waiting (5000ms) for thread "Thread[main,6,main]" to finish starting bundle "reference:file:plugins\com.android.ide.eclipse.adt_0.8.0.v200809220836-110569.jar [493]". To avoid deadlock, thread "Thread[Worker-1,5,main]" is proceeding but "com.android.ide.eclipse.adt.resources.IAndroidLoader" may not be fully initialized.
+!STACK 0
+org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins\com.android.ide.eclipse.adt_0.8.0.v200809220836-110569.jar" by thread "main".
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1144)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:263)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:400)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:111)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:427)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:193)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findLocalClass(BundleLoader.java:368)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findClassInternal(BundleLoader.java:444)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findClass(BundleLoader.java:397)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findClass(BundleLoader.java:385)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:87)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClassInternal(Unknown Source)
+	at com.android.ide.eclipse.adt.AdtPlugin$12.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
+	... 15 more
+Root exception:
+org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1144)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:263)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:400)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:111)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:427)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:193)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findLocalClass(BundleLoader.java:368)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findClassInternal(BundleLoader.java:444)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findClass(BundleLoader.java:397)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findClass(BundleLoader.java:385)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:87)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClassInternal(Unknown Source)
+	at com.android.ide.eclipse.adt.AdtPlugin$12.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.osgi 2 0 2009-02-09 16:41:53.468
+!MESSAGE While loading class "com.android.ide.eclipse.adt.resources.WidgetListLoader", thread "Thread[Worker-1,5,main]" timed out waiting (5000ms) for thread "Thread[main,6,main]" to finish starting bundle "reference:file:plugins\com.android.ide.eclipse.adt_0.8.0.v200809220836-110569.jar [493]". To avoid deadlock, thread "Thread[Worker-1,5,main]" is proceeding but "com.android.ide.eclipse.adt.resources.WidgetListLoader" may not be fully initialized.
+!STACK 0
+org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins\com.android.ide.eclipse.adt_0.8.0.v200809220836-110569.jar" by thread "main".
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1144)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:263)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:400)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:111)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:427)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:193)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findLocalClass(BundleLoader.java:368)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findClassInternal(BundleLoader.java:444)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findClass(BundleLoader.java:397)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findClass(BundleLoader.java:385)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:87)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClassInternal(Unknown Source)
+	at com.android.ide.eclipse.adt.AdtPlugin$12.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
+	... 15 more
+Root exception:
+org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1144)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:263)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:400)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:111)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:427)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:193)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findLocalClass(BundleLoader.java:368)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findClassInternal(BundleLoader.java:444)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findClass(BundleLoader.java:397)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findClass(BundleLoader.java:385)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:87)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClassInternal(Unknown Source)
+	at com.android.ide.eclipse.adt.AdtPlugin$12.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
