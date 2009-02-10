@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Let's get your mobile dev on</string>
+    <string name="app_name">Daum's World</string>
+    <string name="buttonText">Push Me, if you dare.</string>
+</resources>
