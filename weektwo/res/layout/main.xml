@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
+
+
+<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="wrap_content" android:layout_height="wrap_content" xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical"><TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="36px" android:text="Weather Widget!" android:textColor="#ffffff" android:layout_marginLeft="25px"></TextView>
+<AutoCompleteTextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/zipcode" android:width="200px" android:layout_marginLeft="55px" android:layout_marginTop="30px"></AutoCompleteTextView>
+<ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/fetchWeather" android:src="@drawable/umbrella" android:layout_marginLeft="110px" android:layout_marginTop="10px"></ImageButton>
+<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/weatherImage" android:src="@drawable/cloudy" android:layout_marginLeft="105px" android:layout_marginTop="20px" android:visibility="invisible"></ImageView>
 </LinearLayout>
