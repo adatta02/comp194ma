@@ -22,7 +22,7 @@ public class weektwo extends Activity {
 	private static final String LOGCAT_TAG = "Comp194-W2";
 	
     private static final String[] CITIES = new String[] {
-        "Medford, MA", "Somerville, MA", "New York, NY", 
+        "Medford, MA", "Somerville, MA", "New York, NY", "Newark, NJ",
         "Philadelphia, PA", "Berkeley, CA"
     };
 	
