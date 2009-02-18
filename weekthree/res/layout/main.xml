@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+
+
+<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"><TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="36px" android:textColor="#ffffff" android:text="GeoFlickr"></TextView>
+
+<ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" android:indeterminate="true" android:layout_marginLeft="30px" android:id="@+id/loading" android:visibility="invisible"></ProgressBar>
+</LinearLayout>
+<TextView android:layout_height="wrap_content" android:id="@+id/loc" android:text='"move" from the DDMS console' android:textColor="#017BFF" android:textSize="14px" android:layout_width="fill_parent"></TextView><Gallery android:id="@+id/imageGallery" android:layout_height="fill_parent" android:layout_width="fill_parent" android:unselectedAlpha=".8"></Gallery>
+
+
+</LinearLayout>
