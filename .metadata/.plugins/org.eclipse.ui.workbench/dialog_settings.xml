@@ -3,8 +3,19 @@
 	<section name="FileSystemImportWizard">
 	</section>
 	<section name="WorkbenchPreferenceDialogSettings">
-		<item value="4" key="DIALOG_Y_ORIGIN"/>
-		<item value="22" key="DIALOG_X_ORIGIN"/>
+		<item value="73" key="DIALOG_Y_ORIGIN"/>
+		<item value="106" key="DIALOG_X_ORIGIN"/>
+	</section>
+	<section name="NewWizardAction">
+		<item value="com.android.ide.eclipse.adt.project.NewProjectWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="com.android.ide.eclipse.adt.project.category"/>
+			<item value="org.eclipse.emf.codegen.ecore.ui.wizardCategory"/>
+			<item value="org.eclipse.emf.codegen.ecore.ui.wizardCategory/org.eclipse.emf.codegen.ecore.ui.mappingWizardCategory"/>
+			<item value="org.eclipse.wst.XMLCategory"/>
+			<item value="org.eclipse.ui.Examples"/>
+			<item value="org.eclipse.ui.Examples/org.eclipse.wst.xml.examples"/>
+		</list>
 	</section>
 	<section name="ZipFileImportWizard">
 		<item value="false" key="WizardZipFileResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
@@ -12,20 +23,15 @@
 			<item value="C:\Documents and Settings\ashish\Desktop\Downloads\PA3-starter.zip"/>
 		</list>
 	</section>
-	<section name="NewWizardAction">
-		<item value="com.android.ide.eclipse.adt.project.NewProjectWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
-		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
-			<item value="com.android.ide.eclipse.adt.project.category"/>
-		</list>
-	</section>
 	<section name="ShowViewDialog">
 		<item value="280" key="DIALOG_WIDTH"/>
-		<item value="org.eclipse.rse.ui.view.systemView" key="ShowViewDialog.STORE_SELECTED_VIEW_ID"/>
+		<item value="com.android.ide.eclipse.ddms.views.EmulatorControlView" key="ShowViewDialog.STORE_SELECTED_VIEW_ID"/>
 		<item value="109" key="DIALOG_Y_ORIGIN"/>
-		<item value="504" key="DIALOG_X_ORIGIN"/>
 		<item value="421" key="DIALOG_HEIGHT"/>
+		<item value="504" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Tahoma|8.25|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma" key="DIALOG_FONT_NAME"/>
 		<list key="ShowViewDialog.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="com.android.ide.eclipse.ddms.views.category"/>
 			<item value="org.eclipse.rse.ui.view"/>
 		</list>
 	</section>

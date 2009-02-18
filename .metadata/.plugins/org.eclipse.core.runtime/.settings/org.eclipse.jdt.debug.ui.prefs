@@ -1,4 +1,5 @@
-#Thu Dec 11 20:18:47 EST 2008
+#Tue Feb 17 22:21:20 EST 2009
+org.eclipse.jdt.debug.ui.javaDebug.alertHCRNotSupported=false
 org.eclipse.debug.ui.VariableView.org.eclipse.jdt.debug.ui.show_null_entries=true
 eclipse.preferences.version=1
 org.eclipse.debug.ui.ExpressionView.org.eclipse.jdt.debug.ui.show_null_entries=true
