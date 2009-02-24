@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Let's get your mobile dev on</string>
+    <string name="app_name">Daum's Weather Forcasting</string>
+    <string name="picview">Image To Be here.</string>
+    <string name="list">Image To Be here.</string>
+</resources>
