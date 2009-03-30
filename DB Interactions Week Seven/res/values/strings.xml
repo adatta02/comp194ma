@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="main_text">Enter text below to add to your list</string>
+    <string name="enterButton">Add!</string>
+    <string name="clearButton">Clear DB!</string>
+    <string name="app_name">Simple Interactions with Local DB</string>
+</resources>
