@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    ><TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#ffffff" android:textSize="20px" android:text="Android Assassins -&gt; Sign up" android:paddingLeft="10px"></TextView><LinearLayout android:id="@+id/LinearLayout01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30px" android:layout_marginLeft="30px"><TextView android:id="@+id/TextView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Email:" android:textSize="20px" android:textColor="#ffffff"></TextView>
+<EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/emailAddress" android:layout_marginLeft="10px" android:width="200px"></EditText>
+</LinearLayout>
+
+<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30px" android:layout_marginTop="10px"><TextView android:id="@+id/TextView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20px" android:textColor="#ffffff" android:text="Password:"></TextView>
+<EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10px" android:width="150px" android:id="@+id/password" android:password="true"></EditText>
+
+</LinearLayout><LinearLayout android:id="@+id/LinearLayout02" android:layout_width="wrap_content" android:layout_height="wrap_content"><CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="I accept the TOS" android:layout_marginLeft="20px" android:id="@+id/tosCheck"></CheckBox>
+<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sign up!" android:layout_marginLeft="20px" android:id="@+id/doSignUp"></Button>
+<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/play" android:text="Play" android:visibility="gone"></Button>
+</LinearLayout>
+<LinearLayout android:id="@+id/LinearLayout03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10px"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/serverMsg" android:textColor="#06FF00"></TextView>
+</LinearLayout>
+</LinearLayout>
