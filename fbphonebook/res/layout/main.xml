@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:orientation="vertical">
+<LinearLayout android:id="@+id/LinearLayout01" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_width="fill_parent" android:background="#3B5998"><TextView android:layout_height="wrap_content" android:textSize="30px" android:textColor="#ffffff" android:layout_marginTop="10px" android:layout_width="wrap_content" android:layout_marginLeft="90px" android:text="fbphonebk"/>
+
+</LinearLayout>
+
+
+
+<TableLayout android:id="@+id/TableLayout01" android:layout_height="wrap_content" android:layout_width="fill_parent" android:layout_marginTop="10px">
+
+<TableRow android:id="@+id/TableRow02" android:layout_width="wrap_content" android:layout_height="wrap_content"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#ffffff" android:layout_marginTop="10px" android:text="@string/helptext" android:id="@+id/status" android:visibility="visible" android:layout_marginLeft="10px"></TextView>
+
+</TableRow><TableRow android:id="@+id/TableRow01" android:layout_height="wrap_content" android:layout_width="wrap_content" android:paddingTop="10px"><LinearLayout android:id="@+id/LinearLayout02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10px"><ImageButton android:id="@+id/connect" android:layout_width="wrap_content" android:visibility="visible" android:background="@drawable/fbconnect" android:layout_height="wrap_content"></ImageButton><ProgressBar android:layout_width="wrap_content" android:id="@+id/fbProgress" android:layout_marginLeft="20px" android:indeterminate="true" android:visibility="invisible" android:layout_height="wrap_content" android:maxHeight="30px" android:maxWidth="30px"></ProgressBar></LinearLayout>
+
+</TableRow><TableRow android:id="@+id/TableRow02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5px"><LinearLayout android:id="@+id/LinearLayout03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10px"><TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="URL of file:" android:textColor="#ffffff" android:textSize="16px"></TextView>
+<EditText android:layout_height="wrap_content" android:id="@+id/url" android:layout_width="fill_parent" android:layout_marginRight="30px" android:layout_marginLeft="5px" android:textSize="12px"></EditText>
+
+</LinearLayout>
+</TableRow>
+
+
+<TableRow android:id="@+id/TableRow03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10px"><LinearLayout android:id="@+id/LinearLayout04" android:layout_width="wrap_content" android:layout_height="wrap_content"><Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20px" android:text="Launch" android:id="@+id/launch"></Button><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="status" android:textColor="#ffffff" android:layout_marginRight="20px" android:layout_marginLeft="10px" android:id="@+id/progress" android:textSize="12px" android:visibility="invisible"></TextView>
+</LinearLayout>
+
+</TableRow>
+</TableLayout>
+
+</LinearLayout>

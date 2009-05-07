@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_name">fbimportr</string>
+<string name="helptext">Use fbimportr to import your facebook phonebook!\n\nClick the button below to start. Once you login, click &quot;logged in&quot; on the top of the browser.</string>
+</resources>

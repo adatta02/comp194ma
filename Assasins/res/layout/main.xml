@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+
+<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Android Assassins" android:textColor="#ffffff" android:textSize="20px" android:paddingLeft="75px"></TextView><ImageView android:id="@+id/ImageView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/splinter_cell_chaos_theory"></ImageView>
+
+<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20px" android:layout_marginLeft="95px">
+<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Login" android:id="@+id/showLogin"></Button>
+<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sign up" android:id="@+id/showSignUp"></Button>
+</LinearLayout>
+
+</LinearLayout>

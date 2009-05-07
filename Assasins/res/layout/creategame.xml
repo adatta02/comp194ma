@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+
+<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#ffffff" android:textSize="20px" android:paddingLeft="10px" android:text="Android Assassins: Create Game"></TextView>
+
+
+
+<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10px" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/createGameText" android:layout_marginLeft="10px" android:text="text" android:textSize="20px" android:textColor="#06FF00"></TextView><LinearLayout android:id="@+id/LinearLayout03" android:layout_width="wrap_content" android:layout_height="wrap_content"><CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/createGameIsPrivate" android:text="Mark game as private?"></CheckBox>
+</LinearLayout><LinearLayout android:id="@+id/LinearLayout02" android:layout_width="wrap_content" android:layout_height="wrap_content"><ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" android:indeterminate="true" android:indeterminateBehavior="repeat" android:visibility="invisible" android:id="@+id/createLoading"></ProgressBar><Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10px" android:layout_marginLeft="10px" android:text="Create game" android:id="@+id/createGameButton"></Button></LinearLayout>
+
+
+
+
+</LinearLayout>
+</LinearLayout>
