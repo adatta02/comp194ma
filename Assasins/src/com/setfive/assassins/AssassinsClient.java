@@ -18,22 +18,69 @@ import android.util.Log;
 public class AssassinsClient {
 	
 	public static String TAG = "AssassinsClient";
+	
 	private static String signUpUrl = "http://assassins.setfive.com/user/signup";
 	private static String loginUrl = "http://assassins.setfive.com/user/login";
 	private static String createGameUrl = "http://assassins.setfive.com/game/create";
 	private static String joinGameUrl = "http://assassins.setfive.com/game/join";
 	private static String checkGameUrl = "http://assassins.setfive.com/game/checkStatus";
+	private static String killTargetUrl = "http://assassins.setfive.com/game/kill";
 	
 	private static String lastError = "";
-	private static String loggedInUser = "adatta1";
+	private static String loggedInUser = "";
 	
-	private static boolean isAuthenticated = true;
+	private static boolean isAuthenticated = false;
 	private static boolean isInGame = false;
 	private static boolean hasTarget = false;
 	private static double longitude, latitude, targetLongitude, targetLatitude, currJobId;
 	private static Thread updateGameStatus;
 	private static boolean isDead = false, canKill = false;
 	
+	public static final int KILL_STATUS_SUCCESS = 1;
+	public static final int KILL_STATUS_GAME_OVER = 2;
+	public static final int KILL_STATUS_ERROR = 3;
+	
+	public static final int GAME_STATUS_HAS_TARGET_IN_RANGE = 1;
+	public static final int GAME_STATUS_KILLED = 2;
+	
+	
+	public static int killTarget(){
+	
+		String data;
+		try {
+			data = URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(loggedInUser, "UTF-8");
+			data += "&" + URLEncoder.encode("latitude", "UTF-8") + "=" 
+						+ URLEncoder.encode(String.valueOf(latitude), "UTF-8");
+			data += "&" + URLEncoder.encode("longitude", "UTF-8") + "=" 
+						+ URLEncoder.encode(String.valueOf(longitude), "UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			Log.e(TAG, "", e1);
+			lastError = e1.getMessage();
+			return KILL_STATUS_ERROR;
+		}
+		
+		String jsonResponse = fetchDataFromUrl(killTargetUrl, data);
+		try {
+			JSONObject obj = new JSONObject(jsonResponse);
+			Boolean res = obj.getBoolean("result");
+			Boolean win = obj.getBoolean("win");
+			String message = obj.getString("message");
+			
+			lastError = message;
+
+			if(res){
+				return win ? KILL_STATUS_GAME_OVER : KILL_STATUS_SUCCESS;
+			}else{
+				return KILL_STATUS_ERROR;
+			}
+			
+		} catch (JSONException e) {
+			// well the JSON parsing failed so the sign up failed to
+			lastError = "Decoding JSON payload failed: " + e.getMessage();
+			return KILL_STATUS_ERROR;
+		}
+		
+	}
 
 	public static boolean joinGame(double jobId){
 		
@@ -63,65 +110,22 @@ public class AssassinsClient {
 			String message = obj.getString("message");
 			
 			lastError = message;
-			
+
+			isInGame = true;
+			if(updateGameStatus == null){
+				startUpdateThread();
+			}
+			/*
 			if(res){
 				isInGame = true;
 				if(updateGameStatus == null){
-					updateGameStatus = new Thread(){
-						public void run(){
-							
-							String data = "";
-							try {
-								data = URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(loggedInUser, "UTF-8");
-								data += "&" + URLEncoder.encode("latitude", "UTF-8") + "=" 
-										+ URLEncoder.encode(String.valueOf(latitude), "UTF-8");
-								data += "&" + URLEncoder.encode("longitude", "UTF-8") + "=" 
-										+ URLEncoder.encode(String.valueOf(longitude), "UTF-8");
-								data += "&" + URLEncoder.encode("game_id", "UTF-8") + "=" 
-											+ URLEncoder.encode(String.valueOf(currJobId), "UTF-8");
-							} catch (UnsupportedEncodingException e) {
-								Log.e(TAG, "", e);
-								return;
-							}
-							
-							String jsonResponse = fetchDataFromUrl(checkGameUrl, data);
-							
-							try{
-								JSONObject obj = new JSONObject(jsonResponse);
-								boolean res = obj.getBoolean("result");
-								String message = obj.getString("message");
-								
-								if(obj.has("longitude") && obj.has("latitude")){
-									targetLatitude = obj.getDouble("latitude");
-									targetLongitude = obj.getDouble("longitude");
-								}
-								
-								if(obj.has("dead")){
-									isDead = obj.getBoolean("dead");
-								}
-								
-								if(obj.has("can_kill")){
-									canKill = obj.getBoolean("can_kill");
-								}
-								
-								if(targetLatitude != 0 && targetLongitude != 0){
-									hasTarget = true;
-								}
-								
-								Thread.sleep(5000);
-							}catch(Exception ex){ 
-								Log.e(TAG, "", ex);
-							}
-							
-						}
-					};
-					
-					updateGameStatus.start();
+					startUpdateThread();
 				}
 			}else{
 				isInGame = false;
 				lastError = message;
 			}
+			*/
 			
 			return res;
 		} catch (JSONException e) {
@@ -129,6 +133,61 @@ public class AssassinsClient {
 			lastError = "Decoding JSON payload failed: " + e.getMessage();
 			return false;
 		}
+	}
+	
+	private static void startUpdateThread(){
+		updateGameStatus = new Thread(){
+			public void run(){
+				
+				String data = "";
+				
+				while(true){
+					try {
+						data = URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(loggedInUser, "UTF-8");
+						data += "&" + URLEncoder.encode("latitude", "UTF-8") + "=" 
+								+ URLEncoder.encode(String.valueOf(latitude), "UTF-8");
+						data += "&" + URLEncoder.encode("longitude", "UTF-8") + "=" 
+								+ URLEncoder.encode(String.valueOf(longitude), "UTF-8");
+						data += "&" + URLEncoder.encode("game_id", "UTF-8") + "=" 
+									+ URLEncoder.encode(String.valueOf(currJobId), "UTF-8");
+					} catch (UnsupportedEncodingException e) {
+						Log.e(TAG, "", e);
+						return;
+					}
+					
+					String jsonResponse = fetchDataFromUrl(checkGameUrl, data);
+					
+					try{
+						JSONObject obj = new JSONObject(jsonResponse);
+						boolean res = obj.getBoolean("result");
+						String message = obj.getString("message");
+						
+						if(obj.has("longitude") && obj.has("latitude")){
+							targetLatitude = obj.getDouble("latitude");
+							targetLongitude = obj.getDouble("longitude");
+						}
+						
+						if(obj.has("dead")){
+							isDead = obj.getBoolean("dead");
+						}
+						
+						if(obj.has("can_kill")){
+							canKill = obj.getBoolean("can_kill");
+						}
+						
+						if(targetLatitude != 0 && targetLongitude != 0){
+							hasTarget = true;
+						}
+						
+						Thread.sleep(5000);
+					}catch(Exception ex){ 
+						Log.e(TAG, "", ex);
+					}
+				}
+			}
+		};
+		
+		updateGameStatus.start();
 	}
 	
 	public static boolean createGame(Boolean isPrivate){
@@ -165,6 +224,9 @@ public class AssassinsClient {
 			
 			if(res){
 				isInGame = true;
+				if(updateGameStatus == null){
+					startUpdateThread();
+				}
 			}else{
 				isInGame = false;
 			}
@@ -301,7 +363,7 @@ public class AssassinsClient {
 	}
 	
 	public static GeoPoint getTargetCurrentLocation(){
-		return new GeoPoint((int)targetLatitude * 100000, (int)targetLongitude * 100000);
+		return new GeoPoint((int)(targetLatitude*1E6), (int)(targetLongitude*1E6));
 	}
 	
 	public static boolean isHasTarget() {

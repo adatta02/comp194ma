@@ -26,6 +26,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -48,8 +49,12 @@ public class Assassins extends MapActivity {
 	private static final int MESSAGE_STATUS_UPDATE = 5;
 	private static final int MESSAGE_JOIN_SUCCESS = 6;
 	private static final int MESSAGE_JOIN_ERROR = 7;
+	private static final int MESSAGE_KILL_SUCCESS = 8;
+	private static final int MESSAGE_KILL_ERROR = 9;
+	private static final int MESSAGE_KILL_GAME_OVER = 10;
 	
-	private static PointOverlay ov;
+	private PointOverlay ov, ovx;
+	private boolean isGameRunning = false;
 	
 	public class AssassinLocationReciever implements LocationListener {
 
@@ -59,23 +64,6 @@ public class Assassins extends MapActivity {
 			AssassinsClient.setLongitude(arg0.getLongitude());
 			
 			Log.i(TAG, "recieved loc update to " + arg0.getLongitude() + ", " + arg0.getLatitude());
-	        
-			GeoPoint userCenterPoint = AssassinsClient.getCurrentLocation();
-			GeoPoint targetPoint = AssassinsClient.getTargetCurrentLocation();
-			
-			MapView mv = (MapView) findViewById(R.id.mapview);
-	        mv.getController().setCenter(userCenterPoint);
-	        mv.getController().setZoom(17);
-	        
-	        OverlayItem overlayitem = new OverlayItem(userCenterPoint, "", "");
-	        OverlayItem overlayitem2 = new OverlayItem(targetPoint, "", "");
-	        
-	        ov = new PointOverlay(getResources().getDrawable(R.drawable.assassin));
-	        ov.addOverlay(overlayitem);
-	        ov.addOverlay(overlayitem2);
-	        
-	        mv.getOverlays().clear();
-	        mv.getOverlays().add(ov);
 		}
 
 		@Override
@@ -131,6 +119,7 @@ public class Assassins extends MapActivity {
 				TextView tv;
 				String text;
 				ProgressBar pb;
+				Builder ad;
 				
 				switch(sw){
 				case MESSAGE_LOGIN_FAILED: // sign up/login error handler
@@ -171,7 +160,43 @@ public class Assassins extends MapActivity {
 				case MESSAGE_STATUS_UPDATE:
 					tv = (TextView) findViewById(R.id.homeMessages);
 					tv.setText((String) msg.obj);
+					ImageButton ib = (ImageButton) findViewById(R.id.killBtn);
+					
+					if(msg.arg1 == AssassinsClient.GAME_STATUS_HAS_TARGET_IN_RANGE){
+						ib.setVisibility(View.VISIBLE);
+					}else{
+						ib.setVisibility(View.GONE);
+					}
+					
+					if(msg.arg1 == AssassinsClient.GAME_STATUS_KILLED){
+						ad = new AlertDialog.Builder(Assassins.this);
+						ad.setTitle("Game Over!");
+						ad.setMessage("Ouch. You just got assassinated. Your game is over.");
+						ad.setIcon(R.drawable.icon);
+
+						ad.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int whichButton) {
+								setResult(RESULT_OK);
+							}
+						});
+						ad.show();
+						
+						setContentView(R.layout.main);
+					}
+					
 					break;
+				case MESSAGE_JOIN_ERROR:
+					ad = new AlertDialog.Builder(Assassins.this);
+					ad.setTitle("Join game failed!");
+					ad.setMessage("Server said " + AssassinsClient.getLastError());
+					ad.setIcon(R.drawable.icon);
+
+					ad.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int whichButton) {
+							setResult(RESULT_OK);
+						}
+					});
+					ad.show();
 				case MESSAGE_JOIN_SUCCESS:
 					pb = (ProgressBar) findViewById(R.id.homeLoading);
 					pb.setVisibility(View.INVISIBLE);
@@ -179,24 +204,64 @@ public class Assassins extends MapActivity {
 					tv.setText("Game joined. Waiting for target.");
 
 					LinearLayout ll = (LinearLayout) findViewById(R.id.homeJoinLayout);
-					ll.setVisibility(View.INVISIBLE);
+					ll.setVisibility(View.GONE);
 					break;
-				case MESSAGE_JOIN_ERROR:
-					Builder ad = new AlertDialog.Builder(Assassins.this);
-					ad.setTitle("Join game failed!");
-					ad.setMessage("Joining the game failed. The message was " + AssassinsClient.getLastError());
-					ad.setIcon(R.drawable.icon);
+
+				case MESSAGE_KILL_ERROR:
+					pb = (ProgressBar) findViewById(R.id.homeLoading);
+					pb.setVisibility(View.INVISIBLE);
 					
+					ad = new AlertDialog.Builder(Assassins.this);
+					ad.setTitle("Kill failed!");
+					ad.setMessage("Kill failed. Server said " + AssassinsClient.getLastError());
+					ad.setIcon(R.drawable.icon);
+
 					ad.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int whichButton) {
 							setResult(RESULT_OK);
-							finish();
 						}
-					}
-					);
+					});
 					ad.show();
 					break;
-					default: break;
+
+				case MESSAGE_KILL_SUCCESS:
+					pb = (ProgressBar) findViewById(R.id.homeLoading);
+					pb.setVisibility(View.INVISIBLE);
+
+					ad = new AlertDialog.Builder(Assassins.this);
+					ad.setTitle("Kill success!");
+					ad.setMessage("Kill was succesfull! Frag em and tag em.");
+					ad.setIcon(R.drawable.icon);
+
+					ad.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int whichButton) {
+							setResult(RESULT_OK);
+						}
+					});
+					ad.show();
+					break;
+
+				case MESSAGE_KILL_GAME_OVER:
+					pb = (ProgressBar) findViewById(R.id.homeLoading);
+					pb.setVisibility(View.INVISIBLE);
+
+					ad = new AlertDialog.Builder(Assassins.this);
+					ad.setTitle("Kill success! Game Over.");
+					ad.setMessage("Kill was succesfull! Game is over.");
+					ad.setIcon(R.drawable.icon);
+
+					ad.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int whichButton) {
+							setResult(RESULT_OK);
+						}
+					});
+					ad.show();
+					
+					isGameRunning = false;
+					setContentView(R.layout.main);
+					break;
+					
+				default: break;
 				}
 			}
 	};
@@ -218,20 +283,43 @@ public class Assassins extends MapActivity {
     public void setupHomeGamescreen(){
         Button createGame = (Button) this.findViewById(R.id.createButton);
         Button joinGame = (Button) this.findViewById(R.id.joinButton);
+        ImageButton killBtn = (ImageButton) findViewById(R.id.killBtn);
+        isGameRunning = true;
         
         if(updateGameStatus == null){
         	updateGameStatus = new Thread(){
         		public void run(){
         			GeoPoint gp;
         			
-        			while(true){
+        			while(isGameRunning){
         				
             			Message msg = new Message();
             			msg.what = MESSAGE_STATUS_UPDATE;
-        				
+            			msg.arg1 = -1;
+            			
+            			GeoPoint userCenterPoint = AssassinsClient.getCurrentLocation();
+            			GeoPoint targetPoint = AssassinsClient.getTargetCurrentLocation();
+            			
+            			MapView mv = (MapView) findViewById(R.id.mapview);
+            	        mv.getController().setCenter(userCenterPoint);
+            	        mv.getController().setZoom(17);
+            	        
+            	        OverlayItem overlayitem = new OverlayItem(userCenterPoint, "", "");
+            	        OverlayItem overlayitem2 = new OverlayItem(targetPoint, "", "");
+            	        
+            	        ov = new PointOverlay(getResources().getDrawable(R.drawable.assassin));
+            	        ovx = new PointOverlay(getResources().getDrawable(R.drawable.dot));
+            	        ov.addOverlay(overlayitem);
+            	        ovx.addOverlay(overlayitem2);
+            	        
+            	        mv.getOverlays().clear();
+            	        mv.getOverlays().add(ov);
+            	        mv.getOverlays().add(ovx);
+            	        
 	        			if(!AssassinsClient.isInGame()){
 	        				msg.obj = "Not in game. Join/create one?";
 	        			}else{
+	        					        				
 	        				if(!AssassinsClient.isHasTarget()){
 	        					msg.obj = "In game. Waiting for target.";
 	        				}else{
@@ -239,9 +327,15 @@ public class Assassins extends MapActivity {
 	        					gp = AssassinsClient.getTargetCurrentLocation();
 	        					if(AssassinsClient.isCanKill()){
 	        						msg.obj = "Target locked. You are in range. Make the kill.";
+	        						msg.arg1 = AssassinsClient.GAME_STATUS_HAS_TARGET_IN_RANGE;
 	        					}else{
 	        						msg.obj = "Target locked. Get in range to make kill.";
 	        					}
+	        				}
+	        				
+	        				if(AssassinsClient.isDead()){
+	        					msg.arg1 = AssassinsClient.GAME_STATUS_KILLED;
+	        					isGameRunning = false;
 	        				}
 	        			}
 	        			
@@ -271,11 +365,45 @@ public class Assassins extends MapActivity {
         MapView mv = (MapView) findViewById(R.id.mapview);
         mv.getController().setCenter(AssassinsClient.getCurrentLocation());
         
+        killBtn.setOnClickListener(new OnClickListener()
+        {
+			public void onClick(View v)
+            {
+				
+				ProgressBar pb = (ProgressBar) findViewById(R.id.homeLoading);
+				pb.setVisibility(View.VISIBLE);
+				
+				Thread t = new Thread(){
+					public void run(){
+						Message msg = new Message();
+						int res = AssassinsClient.killTarget();
+						
+						if(res == AssassinsClient.KILL_STATUS_ERROR){
+							msg.what = MESSAGE_KILL_ERROR;
+						}
+						
+						if(res == AssassinsClient.KILL_STATUS_SUCCESS){
+							msg.what = MESSAGE_KILL_SUCCESS;
+						}
+						
+						if(res == AssassinsClient.KILL_STATUS_GAME_OVER){
+							msg.what = MESSAGE_KILL_GAME_OVER;
+						}
+						
+						messageHandler.sendMessage(msg);
+					}
+				};
+				
+				t.start();
+            }
+        });
+        
         createGame.setOnClickListener(
         		new OnClickListener()
                 {
         			public void onClick(View v)
                     {
+        				isGameRunning = false;
         				setContentView(R.layout.creategame);
         				setUpCreateGame();
                     }
@@ -389,7 +517,9 @@ public class Assassins extends MapActivity {
     	Button signUp = (Button) this.findViewById(R.id.doSignUp);
     	Button play = (Button) findViewById(R.id.play);
     	CheckBox cb = (CheckBox) findViewById(R.id.tosCheck);
+    	TextView tv = (TextView) findViewById(R.id.signupBanner);
     	
+    	tv.setText("Android Assassins -> Login");
     	cb.setVisibility(View.INVISIBLE);
     	signUp.setText("Login");
     	
@@ -441,6 +571,9 @@ public class Assassins extends MapActivity {
     public void setUpSignUp(){
     	Button signUp = (Button) this.findViewById(R.id.doSignUp);
     	Button play = (Button) findViewById(R.id.play);
+    	TextView tv = (TextView) findViewById(R.id.signupBanner);
+    	
+    	tv.setText("Android Assassins -> Sign up");
     	
     	play.setOnClickListener(
         		new OnClickListener()

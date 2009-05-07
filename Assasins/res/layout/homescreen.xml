@@ -19,6 +19,7 @@
 <LinearLayout android:id="@+id/LinearLayout03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10px">
 
 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/homeMessages" android:text="test" android:textColor="#06FF00" android:textSize="12px"></TextView>
+<ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/killBtn" android:src="@drawable/ninja" android:visibility="gone"></ImageButton>
 </LinearLayout><LinearLayout android:id="@+id/LinearLayout02" android:layout_width="fill_parent" android:layout_height="fill_parent">
     <com.google.android.maps.MapView
         android:id="@+id/mapview"
