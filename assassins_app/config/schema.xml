@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database defaultIdMethod="native" name="propel" package="lib.model">
+  <table name="user">
+    <column name="id" type="VARCHAR" size="32" primaryKey="true" required="true"/>
+    <column name="password" type="VARCHAR" size="36"/>
+    <column name="kills" type="INTEGER"/>
+    <column name="deaths" type="INTEGER"/>
+    <column name="games_played" type="INTEGER"/>
+    <column name="wins" type="INTEGER"/>
+    <column name="losses" type="INTEGER"/>
+    <column name="current_game_id" type="INTEGER"/>
+    <column name="latitude" type="VARCHAR" size="45"/>
+    <column name="longitude" type="VARCHAR" size="45"/>
+    <foreign-key name="user_game" foreignTable="game">
+      <reference local="current_game_id" foreign="id"/>
+    </foreign-key>
+  </table>
+  <table name="game">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="start_time" type="TIMESTAMP"/>
+    <column name="end_time" type="TIMESTAMP"/>
+    <column name="active_players" type="INTEGER"/>
+    <column name="latitude" type="VARCHAR" size="45"/>
+    <column name="longitude" type="VARCHAR" size="45"/>
+    <column name="is_active" type="BOOLEAN"/>
+    <column name="is_public" type="BOOLEAN" />
+  </table>
+  <table name="target">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="from_user_id" type="VARCHAR" size="32"/>
+    <column name="to_user_id" type="VARCHAR" size="32"/>
+    <foreign-key name="from_user_target" foreignTable="user" phpName="FromUser">
+      <reference local="from_user_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key name="to_user_target" foreignTable="user" phpName="ToUser">
+      <reference local="to_user_id" foreign="id"/>
+    </foreign-key>
+  </table>
+  <table name="game_member">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="user_id" type="VARCHAR" size="45"/>
+    <column name="game_id" type="INTEGER"/>
+    <column name="is_active" type="BOOLEAN"/>
+    <foreign-key name="game_member_user" foreignTable="user">
+      <reference local="user_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key name="game_member_game" foreignTable="game">
+      <reference local="game_id" foreign="id"/>
+    </foreign-key>
+  </table>
+</database>
+

@@ -1,0 +1,34 @@
+
+user_signup:
+  url:  /user/signup
+  param: { module: user, action: signup }
+user_login:
+  url:  /user/login
+  param: { module: user, action: login }  
+
+game_create:
+  url: /game/create
+  param: { module: game, action: create }
+
+game_check_status:
+  url: /game/checkStatus
+  param: { module: game, action checkStatus }
+
+game_join:
+  url: /game/join  
+  param: { module: game, action join }
+
+game_kill:
+  url: /game/kill
+  param: { module: game, action kill }
+# default rules  
+homepage:
+  url:   /
+  param: { module: default, action: index }
+
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*
