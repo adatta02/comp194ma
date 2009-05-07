@@ -9,4 +9,24 @@
 
 
 
+<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/homeJoinLayout"><ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" android:indeterminate="true" android:indeterminateBehavior="repeat" android:visibility="invisible" android:id="@+id/homeLoading"></ProgressBar><EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/joinGameId"></EditText><Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/joinButton" android:text="Join a game" android:textSize="11px" android:layout_marginLeft="5px"></Button><Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/createButton" android:text="Create game" android:textSize="11px" android:layout_marginLeft="5px"></Button>
+
+
+
+
+
+</LinearLayout>
+<LinearLayout android:id="@+id/LinearLayout03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10px">
+
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/homeMessages" android:text="test" android:textColor="#06FF00" android:textSize="12px"></TextView>
+</LinearLayout><LinearLayout android:id="@+id/LinearLayout02" android:layout_width="fill_parent" android:layout_height="fill_parent">
+    <com.google.android.maps.MapView
+        android:id="@+id/mapview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true"
+        android:apiKey="0DnoVM9SWS6OoXbrPGTeL8-LEM5GKvbS_mbrMQA"
+    />
+</LinearLayout>
+
 </LinearLayout>
