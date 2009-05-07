@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, HTTP</string>
+    <string name="app_name">HTTP Interactions</string>
+    <string name="main_text">A server below to see if it is up:</string>
+    <string name="checkButton">Check server!</string>
+    
+    
+</resources>

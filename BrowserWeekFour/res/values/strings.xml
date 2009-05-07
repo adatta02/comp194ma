@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title">Welcome to Browser App Example!  Please enter a url you'd like to visit below.</string>
+    <string name="app_name">Hello Browser App</string>
+    <string name="url_browse">http://setfive.com</string>
+    <string name="urlButton">GO TO SITE!</string>
+</resources>
+

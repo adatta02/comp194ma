@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="threads_description">Below We'll start threads for the expensive operations so the entire app does not hang!</string>
+    <string name="app_name">Threads are fun.</string>
+    <string name="threadButton">Run Process with Threading.</string>
+    <string name="noThreadButton">Run Process without Threading</string>
+    <string name="clearButton">Clear Process Output</string>
+</resources>
